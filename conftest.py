@@ -42,3 +42,8 @@ def logged_in_page(page: Page) -> Page:
     login.open().login(Config.STANDARD_USER, Config.PASSWORD)
     page.wait_for_url("**/inventory.html")
     return page
+
+
+def pytest_sessionfinish(session, exitstatus):
+    from my_qa_packages.runner import execute
+    execute()
